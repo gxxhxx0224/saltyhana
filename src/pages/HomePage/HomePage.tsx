@@ -10,7 +10,12 @@ const HomePage: React.FC = () => {
   return (
     <PageContainer>
       {/* 목표, 진행도 박스 레이아웃  */}
-      <GoalProgressContainer goal={"여행"} date={"2024.12.23"} progress={80} />
+      <GoalProgressContainer
+        goal={"여행"}
+        startdate={"2024.10.01"}
+        enddate={"2024.12.23"}
+        progress={80}
+      />
       {/* 주간 캘린더 레이아웃 */}
       <Calendar />
       {/* 상품 리스트가 표시되는 섹션 */}

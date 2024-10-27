@@ -11,17 +11,17 @@ export const Container = styled.div`
 
 export const Paper = styled.div`
   min-width: 320px;
-  max-width: 450px;
+  max-width: 400px;
   width: 100%;
   margin: 0 25px;
   background: #f6f6f6;
   border-radius: 50px;
-  padding: 50px;
+  padding: 50px 70px;
   font-size: 16px;
   > h2 {
     font-style: normal;
     font-weight: 700;
-    font-size: 35px;
+    font-size: 28px;
     color: #424242;
     line-height: 110%;
     text-shadow: 2px 4px 8px rgba(252, 226, 206, 0.2);
@@ -30,7 +30,7 @@ export const Paper = styled.div`
   > h1 {
     font-style: normal;
     font-weight: 700;
-    font-size: 55px;
+    font-size: 45px;
     color: #008485;
     line-height: 110%;
     text-shadow: 2px 4px 8px rgba(252, 226, 206, 0.2);
@@ -63,14 +63,15 @@ export const StyledButton = styled.button`
   letter-spacing: 0.2px;
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 140%;
   border: 0;
   width: 100%;
+  height: 55px;
   color: #ffffff;
   cursor: pointer;
   padding: 12px 0;
-  margin: 25px 0;
+  /* margin: 25px 0; */
 `;
 
 export const FooterParagraph = styled.p`

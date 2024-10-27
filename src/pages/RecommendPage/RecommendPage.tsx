@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import * as styled from "./styles";
 import travelLogImage from "../../images/recommend_travellog.png";
@@ -7,13 +7,33 @@ import youthAccountImage from "../../images/recommend_youthaccount.png";
 import counselIcon from "../../images/recommend_counsel.png";
 import { ReactComponent as WalletIcon } from "../../images/recommend_wallet.svg";
 import { ReactComponent as RecommendIcon } from "../../images/recommend_producticon.svg";
+import CounselButton from "../../components/CounselButton/CounselButton"; // 고객센터 버튼 컴포넌트
+import ChatModal from "../../components/ChatModal/ChatModal"; // 모달 컴포넌트 임포트
 
+// import Loading from '../../components/LoadingModal/LoadingModal';
 // RecommendPage 컴포넌트: 추천 페이지를 렌더링하는 함수형 컴포넌트
 const RecommendPage: React.FC = () => {
+  // 채팅 모달 구현을 위한 것
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div>
       {/* 전체 페이지의 레이아웃 */}
       <styled.BodyWrapper>
+        <styled.PageTitle>
+          <span>맞춤형 상품 추천</span>
+        </styled.PageTitle>
+        <styled.PageDescription>
+          <span>목표와 소비성향에 따른 맞춤 상품을 추천 받아보세요.</span>
+        </styled.PageDescription>
         {/* 상품 리스트가 표시되는 섹션 */}
         <styled.ProductList>
           {/* 트래블로그 여행 적금 카드 */}
@@ -57,20 +77,6 @@ const RecommendPage: React.FC = () => {
             <styled.ProductTitle>달달하나 적금</styled.ProductTitle>
           </styled.ProductWrapper>
 
-          {/* 이미지 크기 수정 요망 */}
-          {/* 
-          <styled.ProductWrapper>
-            <styled.ProductCard >
-              <styled.ProductCardTitle>달달 하나</styled.ProductCardTitle>
-              <styled.ProductInfo>
-                혜택(2백만원까지)
-                <br />
-                기본 0.10%~최고 3.00%(연, 세전)
-              </styled.ProductInfo>
-            </styled.ProductCard>
-            <styled.ProductTitle>달달하나 적금</styled.ProductTitle>
-          </styled.ProductWrapper> */}
-
           {/* 하나 청년도약 계좌 */}
           <styled.ProductWrapper>
             <styled.ProductCard>
@@ -104,29 +110,19 @@ const RecommendPage: React.FC = () => {
           </styled.RecommendProduct>
 
           {/* 소비성향 테스트 */}
-          <styled.TestCard>
-            <styled.TestCardText>
-              <Link
-                to="/test/consumption"
-                style={{ color: "white", textDecoration: "none" }}
-              >
+          <Link
+            to="/teststart"
+            style={{ color: "white", textDecoration: "none" }}
+          >
+            <styled.TestCard>
+              <styled.TestCardText>
                 소비성향
                 <br />
                 Test
-              </Link>
-            </styled.TestCardText>
-            <WalletIcon />
-          </styled.TestCard>
-
-          {/* 고객센터 버튼 */}
-          <styled.CounselBox>
-            <styled.IconWrapper>
-              {/* 고객센터 아이콘 */}
-              <styled.IconImage src={counselIcon} alt="고객센터 아이콘" />
-            </styled.IconWrapper>
-            {/* 고객센터 텍스트 */}
-            <styled.CounselText>고객센터</styled.CounselText>
-          </styled.CounselBox>
+              </styled.TestCardText>
+              <WalletIcon />
+            </styled.TestCard>
+          </Link>
         </styled.ProductList>
       </styled.BodyWrapper>
     </div>

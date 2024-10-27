@@ -43,7 +43,7 @@ const TeststartPage: React.FC = () => {
         <p>맞춤형 금융 상품 추천까지!</p>
       </styled.Element3>
 
-      <Link to="/testing">
+      <Link to="/test">
         <styled.ButtonWrapper>
           <p>시작하기</p>
         </styled.ButtonWrapper>

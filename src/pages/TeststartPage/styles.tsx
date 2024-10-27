@@ -55,7 +55,7 @@ export const ButtonWrapper = styled.div`
   position: absolute;
   width: 495px;
   height: 84px;
-  left: 616px;
+  left: 580px;
   top: 875px;
 
   background: #008485;
@@ -68,6 +68,15 @@ export const ButtonWrapper = styled.div`
   font-weight: 500;
   font-size: 30px;
   line-height: px;
+
+  /* Hover 효과 추가 */
+  transition: background-color 0.5s;
+  &:hover {
+    background-color: #ffffff; /* hover 시 색상 */
+    p {
+      color: #008485; /* 텍스트 색상 변경 */
+    }
+  }
 `;
 
 export const Element1 = styled.div`
@@ -76,14 +85,16 @@ export const Element1 = styled.div`
   position: absolute;
   width: 321px;
   height: 256px;
-  left: 268px;
+  left: 290px;
   top: 435px;
 
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 27px;
-  line-height: px;
+  p {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 27px;
+    line-height: px;
+  }
 `;
 
 export const Element2 = styled.div`
@@ -92,14 +103,20 @@ export const Element2 = styled.div`
   position: absolute;
   width: 247px;
   height: 275px;
-  left: 740px;
+  left: 720px;
   top: 435px;
 
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 27px;
-  line-height: px;
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 27px;
+    line-height: px;
+  }
 `;
 
 export const Element3 = styled.div`
