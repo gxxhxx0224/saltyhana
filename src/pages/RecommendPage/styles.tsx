@@ -39,7 +39,7 @@ export const PageDescription = styled.p`
 export const ProductList = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 15px;
+  gap: 30px;
   margin-bottom: 15px;
 
   > *:nth-child(1) {

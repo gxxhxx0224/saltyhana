@@ -28,10 +28,6 @@ export const Card = styled.div`
   position: relative;
   transition: transform 0.5s ease; /* 부드러운 전환 효과 */
 
-  &:hover {
-    transform: scale(1.1);
-  }
-
   /* 이미지에 어두운 오버레이 추가 */
   &:before {
     content: "";
