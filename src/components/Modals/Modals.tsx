@@ -23,21 +23,19 @@ interface ModalsProps {
 
 const Modals: React.FC<ModalsProps> = ({ onClose }) => {
   const [isOpen, setIsOpen] = useState(true);
-  const [startIndex, setStartIndex] = useState(0); // 현재 시작 인덱스
+  const [startIndex, setStartIndex] = useState(0);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedBank, setSelectedBank] = useState<Bank | null>(null);
   const [nearbyBanks, setNearbyBanks] = useState<Bank[]>([]);
-  const [isReservationConfirmed, setIsReservationConfirmed] = useState(false); // 예약 완료 버튼 누르고 나오는 모달 상태
+  const [searchBanks, setSearchBanks] = useState<Bank[]>([]);
+  const [isReservationConfirmed, setIsReservationConfirmed] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태 추가
 
   // 기본 날짜 세팅
   const today = new Date();
   const [selectedYear, setSelectedYear] = useState(today.getFullYear());
-  const [selectedMonth, setSelectedMonth] = useState(today.getMonth() + 1); // 월은 0부터 시작하므로 1을 더함
+  const [selectedMonth, setSelectedMonth] = useState(today.getMonth() + 1);
   const [selectedDay, setSelectedDay] = useState(today.getDate());
-
-  const handleSelectBank = (bank: Bank) => {
-    setSelectedBank(bank);
-  };
 
   const handleReserve = () => {
     if (!selectedBank) {
@@ -66,14 +64,15 @@ const Modals: React.FC<ModalsProps> = ({ onClose }) => {
               setNearbyBanks={setNearbyBanks}
               selectedBank={selectedBank}
               setSelectedBank={setSelectedBank}
+              searchQuery={searchQuery}
+              onSearchResults={setSearchBanks}
+              setSearchQuery={setSearchQuery} // 쿼리 업데이트 함수 전달
             />
           </MapContainer>
-
           <UnderMapContainer>
             <LeftContainer>
               <Left2Container>
-                <BankSearch />
-
+                <BankSearch onSearch={setSearchQuery} />
                 <DateContainer>
                   <DateSelector
                     selectedYear={selectedYear}
@@ -96,7 +95,7 @@ const Modals: React.FC<ModalsProps> = ({ onClose }) => {
 
             <RightContainer>
               <BankList
-                banks={nearbyBanks}
+                banks={searchQuery ? searchBanks : nearbyBanks}
                 onSelectBank={setSelectedBank}
                 selectedBank={selectedBank}
               />

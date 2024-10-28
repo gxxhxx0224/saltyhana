@@ -16,6 +16,7 @@ interface KakaoMapProps {
 
 interface KakaoMapRef {
   setCenter: (lat: number, lng: number) => void;
+  getInitialPosition: () => { lat: number; lng: number };
 }
 
 const KakaoMap = forwardRef<KakaoMapRef, KakaoMapProps>(
@@ -77,6 +78,7 @@ const KakaoMap = forwardRef<KakaoMapRef, KakaoMapProps>(
       setCenter: (lat: number, lng: number) => {
         setCurrentPosition({ lat, lng });
       },
+      getInitialPosition: () => initialPosition,
     }));
 
     const handleDragEnd = (map: any) => {

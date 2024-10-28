@@ -63,3 +63,7 @@ export const StyledHeaderLink = styled(HeaderLink)`
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
 `;
+
+export const WelcomeSpan = styled.span`
+  font-weight: 700;
+`;

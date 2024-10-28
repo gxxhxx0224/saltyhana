@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import travel from "../../images/travel.svg";
 import calendar from "../../images/calendar.svg";
-
+import set_goal_stamp from "../../images/set_goal_stamp.png";
 interface GoalContainerProps {
   goal: string;
   startdate: string;
@@ -220,6 +220,10 @@ const CalendarDate = styled.div`
   font-family:
     Noto Sans KR,
     sans-serif;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const CalendarDay = styled.div<{ isActive: boolean }>`
@@ -245,7 +249,19 @@ const CalendarIcon = styled.img.attrs({ alt: "달력 이미지" })`
   margin: 10px 0 0 15px;
 `;
 
-export const Calendar = () => {
+const StampIcon = styled.img.attrs({ alt: "스탬프 이미지" })`
+  width: 60px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+interface CalendarContainerProps {
+  showStamp: boolean[];
+}
+
+export const Calendar: React.FC<CalendarContainerProps> = ({ showStamp }) => {
   const days = ["일", "월", "화", "수", "목", "금", "토"];
   const now = new Date();
   let date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -262,11 +278,14 @@ export const Calendar = () => {
           <CalendarDay key={index} isActive={index === activeDay}>
             <CalendarDate>
               <p style={{ padding: "10px" }}>{day}</p>
-              <p style={{ padding: "10px" }}>
-                {new Date(
-                  date.valueOf() + 86400000 * (index - date.getDay()),
-                ).getDate()}
-              </p>
+              <div style={{ position: "relative" }}>
+                {showStamp[index] && <StampIcon src={set_goal_stamp} />}
+                <p style={{ padding: "10px", position: "relative", zIndex: 1 }}>
+                  {new Date(
+                    date.valueOf() + 86400000 * (index - date.getDay()),
+                  ).getDate()}
+                </p>
+              </div>
             </CalendarDate>
           </CalendarDay>
         ))}

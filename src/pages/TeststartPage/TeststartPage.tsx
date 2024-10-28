@@ -7,48 +7,41 @@ import img3 from "../../images/TeststartImg3.png";
 import { Link } from "react-router-dom";
 
 const TeststartPage: React.FC = () => {
-  const onClick = () => {};
   return (
-    <>
-      <div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginTop: "12px",
-            marginLeft: "12px",
-          }}
-        >
-          <styled.HanaLogo src={hanalogo} />
-          <styled.Logo>자산을 하나로</styled.Logo>
-        </div>
-      </div>
-      <styled.Container>
-        <h1>내 소비 성향 찾기</h1>
-        <p>내 소비 성향을 찾고 맞춤형 금융 상품을 찾을 수 있어요</p>
-      </styled.Container>
-
-      <styled.Element1>
-        <styled.ElementImg src={img1} />
-        <p>8개 질문으로 간단하게!</p>
-      </styled.Element1>
-
-      <styled.Element2>
-        <styled.ElementImg src={img2} />
-        <p>소비 성향을 분석!</p>
-      </styled.Element2>
-
-      <styled.Element3>
-        <styled.ElementImg src={img3} />
-        <p>맞춤형 금융 상품 추천까지!</p>
-      </styled.Element3>
-
-      <Link to="/test">
-        <styled.ButtonWrapper>
-          <p>시작하기</p>
-        </styled.ButtonWrapper>
+    <styled.Container>
+      <styled.Header>
+        <span>내 소비 성향 찾기</span>
+      </styled.Header>
+      <styled.HeaderDescription>
+        <span>내 소비 성향을 찾고 맞춤형 금융 상품을 찾을 수 있어요.</span>
+      </styled.HeaderDescription>
+      <styled.ElementDiv>
+        <styled.Element>
+          <styled.ElementImage src={img1} style={{ marginLeft: "20px" }} />
+          <styled.ElementDescription style={{ marginTop: "50px" }}>
+            8개 질문으로 간단하게!
+          </styled.ElementDescription>
+        </styled.Element>
+        <styled.Element>
+          <styled.ElementImage
+            src={img2}
+            style={{ width: "210px", height: "auto" }}
+          />
+          <styled.ElementDescription>
+            소비 성향을 분석!
+          </styled.ElementDescription>
+        </styled.Element>
+        <styled.Element>
+          <styled.ElementImage src={img3} style={{ marginRight: "20px" }} />
+          <styled.ElementDescription style={{ marginTop: "40px" }}>
+            맞춤형 금융 상품 추천까지!
+          </styled.ElementDescription>
+        </styled.Element>
+      </styled.ElementDiv>
+      <Link to="/test/consumption" style={{ textDecoration: "none" }}>
+        <styled.ButtonWrapper>시작하기</styled.ButtonWrapper>
       </Link>
-    </>
+    </styled.Container>
   );
 };
 

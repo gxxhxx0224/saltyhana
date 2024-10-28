@@ -48,3 +48,25 @@ export const CloseButton = styled.button`
   color: #888;
   font-size: 15px;
 `;
+
+//지도 검색 초기화
+export const MapButton = styled.button`
+  position: absolute;
+  top: 8px;
+  right: 60px;
+  background-color: transparent;
+  color: #333;
+  border: none; // 테두리 없음
+  cursor: pointer; // 커서 포인터로 변경
+  font-size: 14px;
+  z-index: 100;
+
+  &:hover {
+    text-decoration: underline; // 호버 시 밑줄 추가
+    font-weight: bold;
+  }
+
+  &:focus {
+    outline: none; // 포커스 시 테두리 없음
+  }
+`;

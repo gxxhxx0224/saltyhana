@@ -27,18 +27,22 @@ const BankList: React.FC<BankListProps> = ({
 
   return (
     <>
-      <ListTitle>검색된 은행 목록</ListTitle>
+      <ListTitle>지점 검색 결과</ListTitle>
       <ListContainer>
-        {banks.map((bank) => (
-          <ListItem
-            key={bank.name}
-            isSelected={selectedBank?.name === bank.name}
-            onClick={() => onSelectBank(bank)}
-            ref={selectedBank?.name === bank.name ? selectedBankRef : null} // 선택된 아이템에 ref 추가
-          >
-            {bank.name}
-          </ListItem>
-        ))}
+        {banks.length === 0 ? (
+          <ListItem isSelected={false}>검색 결과가 없습니다.</ListItem>
+        ) : (
+          banks.map((bank) => (
+            <ListItem
+              key={bank.name}
+              isSelected={selectedBank?.name === bank.name}
+              onClick={() => onSelectBank(bank)}
+              ref={selectedBank?.name === bank.name ? selectedBankRef : null} // 선택된 아이템에 ref 추가
+            >
+              {bank.name}
+            </ListItem>
+          ))
+        )}
       </ListContainer>
     </>
   );

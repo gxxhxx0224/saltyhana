@@ -1,3 +1,5 @@
+import { useLocation } from "react-router-dom";
+
 import {
   FixedHeader,
   HeaderBox,
@@ -5,12 +7,28 @@ import {
   HanaLogoDiv,
   HeaderLink,
   StyledHeaderLink,
+  WelcomeSpan,
 } from "./styles";
 import hana_logo from "../../images/hanabank_logo.png";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
-// TODO: 로그인 여부에 따라 헤더 버튼
+interface IUserInfo {
+  id: string;
+  password: string;
+  isLoggedIn: boolean;
+}
+
+const initInfo: IUserInfo = {
+  id: "",
+  password: "",
+  isLoggedIn: false,
+};
+
 export default function Header() {
-  // const auth = useAuth();
+  const location = useLocation();
+  const [user, setUser] = useLocalStorage<IUserInfo>("userInfo", initInfo);
+
+  const pathName = location.pathname;
 
   return (
     <FixedHeader>
@@ -23,8 +41,15 @@ export default function Header() {
             </HanaLogoDiv>
           </HeaderLink>
         </div>
-        <div style={{ flex: "none" }}>
-          <StyledHeaderLink to="/signup">회원가입</StyledHeaderLink>
+        <div style={{ flex: "none", display: "flex", gap: "5px" }}>
+          {pathName === "/" ? (
+            <>
+              <StyledHeaderLink to="/login">로그인</StyledHeaderLink>
+              <StyledHeaderLink to="/signup">회원가입</StyledHeaderLink>
+            </>
+          ) : (
+            <WelcomeSpan>{user.id}님 환영합니다</WelcomeSpan>
+          )}
         </div>
       </HeaderBox>
     </FixedHeader>

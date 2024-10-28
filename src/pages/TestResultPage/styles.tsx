@@ -91,6 +91,17 @@ export const StyledLink = styled(Link)`
   font-size: 24px;
   font-weight: 600;
   color: #ffffff;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
+
+  &:hover {
+    background-color: #ffffff; /* hover 시 배경을 흰색으로 변경 */
+  }
+
+  &:hover span {
+    color: #008485; /* hover 시 텍스트 색상을 짙은 #008485로 설정 */
+  }
 `;
 
 export const Container = styled.div`

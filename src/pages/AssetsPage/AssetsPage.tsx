@@ -30,6 +30,8 @@ import {
   Title,
   AccountListContainer,
   AccountItem,
+  Header,
+  HeaderDescription,
 } from "./styles";
 
 ChartJS.register(
@@ -188,65 +190,72 @@ const AssetsPage: React.FC = () => {
   }, []);
 
   return (
-    <PageContainer>
-      <div style={{ flex: 1 }}>
-        <div style={{ display: "flex", flex: 1, width: "100%" }}>
-          <div style={{ flex: 1.5, paddingRight: "10px" }}>
-            {/* 계좌 박스 */}
-            <Account
-              accountNumber={selectedAccount.accountNumber}
-              accountName={selectedAccount.accountName}
-              balance={selectedAccount.balance}
-            />
+    <>
+      <Header>짭짤하나 님의 자산 현황</Header>
+      <HeaderDescription>
+        짭짤하나 님이 가지고 계신 계좌 잔액과 기간 별 지출 현황을 확인하실 수
+        있어요.
+      </HeaderDescription>
+      <PageContainer>
+        <div style={{ flex: 1 }}>
+          <div style={{ display: "flex", flex: 1, width: "100%" }}>
+            <div style={{ flex: 1.5, paddingRight: "10px" }}>
+              {/* 계좌 박스 */}
+              <Account
+                accountNumber={selectedAccount.accountNumber}
+                accountName={selectedAccount.accountName}
+                balance={selectedAccount.balance}
+              />
+            </div>
+            <div style={{ flex: 0.5, paddingLeft: "10px" }}>
+              {/* 계좌 리스트 박스 */}
+              <AccountListContainer>
+                {accounts.map((account) => (
+                  <AccountItem
+                    key={account.accountNumber}
+                    className={
+                      selectedAccount.accountNumber === account.accountNumber
+                        ? "active"
+                        : ""
+                    }
+                    onClick={() => setSelectedAccount(account)}
+                  >
+                    {account.accountName}
+                    <br></br>
+                    {account.accountNumber}
+                  </AccountItem>
+                ))}
+              </AccountListContainer>
+            </div>
           </div>
-          <div style={{ flex: 0.5, paddingLeft: "10px" }}>
-            {/* 계좌 리스트 박스 */}
-            <AccountListContainer>
-              {accounts.map((account) => (
-                <AccountItem
-                  key={account.accountNumber}
-                  className={
-                    selectedAccount.accountNumber === account.accountNumber
-                      ? "active"
-                      : ""
-                  }
-                  onClick={() => setSelectedAccount(account)}
-                >
-                  {account.accountName}
-                  <br></br>
-                  {account.accountNumber}
-                </AccountItem>
-              ))}
-            </AccountListContainer>
-          </div>
-        </div>
 
-        {/* 선택된 계좌 지출 그래프 컨테이너 */}
-        <ChartsContainer>
-          <div style={{ display: "flex", width: "100%" }}>
-            <AssetDiv>
-              <AssetGuideDiv>
-                <CharacterIcon src={character} />
-                <AssetTitle>돈을 얼마나 썼을까?</AssetTitle>
-                <AssetDescription>
-                  확인하고 싶은 기간을 드래그하여 지출 금액을 확인하세요!
-                </AssetDescription>
-                <CumulativeSum>
-                  {zoomedRange}
-                  <br></br>총 <span>{cumulativeSum.toLocaleString()}</span>
-                  원을 쓰셨네요
-                </CumulativeSum>
-              </AssetGuideDiv>
-            </AssetDiv>
-            {/* 라인 그래프 컨테이너 */}
-            <LineChartContainer>
-              <Title></Title>
-              {lineData && <Line data={lineData} options={lineOptions} />}
-            </LineChartContainer>
-          </div>
-        </ChartsContainer>
-      </div>
-    </PageContainer>
+          {/* 선택된 계좌 지출 그래프 컨테이너 */}
+          <ChartsContainer>
+            <div style={{ display: "flex", width: "100%" }}>
+              <AssetDiv>
+                <AssetGuideDiv>
+                  <CharacterIcon src={character} />
+                  <AssetTitle>돈을 얼마나 썼을까?</AssetTitle>
+                  <AssetDescription>
+                    확인하고 싶은 기간을 드래그하여 지출 금액을 확인하세요!
+                  </AssetDescription>
+                  <CumulativeSum>
+                    {zoomedRange}
+                    <br></br>총 <span>{cumulativeSum.toLocaleString()}</span>
+                    원을 쓰셨네요
+                  </CumulativeSum>
+                </AssetGuideDiv>
+              </AssetDiv>
+              {/* 라인 그래프 컨테이너 */}
+              <LineChartContainer>
+                <Title></Title>
+                {lineData && <Line data={lineData} options={lineOptions} />}
+              </LineChartContainer>
+            </div>
+          </ChartsContainer>
+        </div>
+      </PageContainer>
+    </>
   );
 };
 

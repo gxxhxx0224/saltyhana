@@ -103,7 +103,7 @@ export const FullCalendarWrapper = styled.div`
       background-color: white !important;
 
       .fc-daygrid-day-number {
-        background-color: #3b82f6;
+        background-color: #0087bf;
         color: white !important;
         padding: 0.25rem 0.5rem;
         border-radius: 9999px;
@@ -153,7 +153,7 @@ export const FullCalendarWrapper = styled.div`
       position: absolute;
       left: 0;
       height: 100%;
-      background: #3b82f6; // 진행률 표시 색상
+      background: #30b3ff; // 진행률 표시 색상
       border-radius: 3px;
       transition: width 0.3s ease;
     }

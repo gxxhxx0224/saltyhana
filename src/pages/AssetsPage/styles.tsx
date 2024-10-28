@@ -42,11 +42,29 @@ export const AccountItem = styled.div`
   }
 `;
 
+export const Header = styled.div`
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  padding-top: 30px;
+  margin-left: 20px;
+`;
+
+export const HeaderDescription = styled.div`
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  margin-left: 20px;
+`;
+
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 20px;
+  /* padding-top: 60px; */
   font-family:
     Noto Sans KR,
     sans-serif;

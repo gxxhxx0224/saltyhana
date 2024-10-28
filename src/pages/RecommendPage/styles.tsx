@@ -1,41 +1,79 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 // 페이지 본문
 export const BodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  height: 100%;
+  padding: 20px 62px;
   // background-color: #f0f0f0;
 `;
 
 export const PageTitle = styled.div`
-  font-family: "Noto Sans KR";
   font-style: bold;
   font-weight: 700;
   font-size: 36px;
   text-align: left;
-  margin-left: 42px;
 `;
 
-export const PageDescription = styled.div`
-  font-family: "Noto Sans KR";
+export const PageDescription = styled.p`
+  margin: 0;
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
   text-align: left;
-  margin-left: 42px;
+  padding-bottom: 15px;
 `;
 
 // 상품 리스트 스타일
 export const ProductList = styled.div`
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1728px;
-  justify-content: space-between;
-  row-gap: 85px; /* 세로 줄 간의 간격을 조정 */
-  margin: 42px 42px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+
+  > *:nth-child(1) {
+    opacity: 0;
+    animation: ${fadeIn} 1s ease-out forwards;
+    animation-delay: 0.3s; // 가장 먼저 나타남
+  }
+  > *:nth-child(2) {
+    opacity: 0;
+    animation: ${fadeIn} 1s ease-out forwards;
+    animation-delay: 0.6s; // 가장 먼저 나타남
+  }
+  > *:nth-child(3) {
+    opacity: 0;
+    animation: ${fadeIn} 1s ease-out forwards;
+    animation-delay: 0.9s; // 가장 먼저 나타남
+  }
+`;
+
+export const CustomList = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+
+  > *:nth-child(1) {
+    opacity: 0;
+    animation: ${fadeIn} 1s ease-out forwards;
+    animation-delay: 1.2s;
+  }
+  > *:nth-child(2) {
+    opacity: 0;
+    animation: ${fadeIn} 1s ease-out forwards;
+    animation-delay: 1.5s;
+  }
 `;
 
 // 상품 카드와 제목을 감싸는 래퍼
@@ -167,66 +205,44 @@ export const ProductTitle = styled.p`
   z-index: 2; /* 텍스트는 이미지 위로 보이도록 설정 */
 `;
 
-// 맞춤 상품 스타일
-export const RecommendProduct = styled.div`
-  width: 660px;
+const BasicCard = styled.div`
+  width: 100%;
   height: 250px;
-  background: #e8e8e8;
-  color: black;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 180px;
+  display: grid;
+  grid-template-columns: 1fr 250px;
   transition: transform 0.5s ease; /* 부드러운 전환 효과 추가 */
 
   &:hover {
     transform: scale(1.1);
   }
+
+  * span {
+    font-size: 30px;
+    font-weight: 900;
+    text-align: left;
+    line-height: 1.3;
+    margin: 0 0 30px 30px;
+  }
+  > div {
+    width: 100%;
+    height: inherit;
+    display: flex;
+    align-items: end;
+  }
 `;
 
-// 텍스트 스타일
-export const RecommendProductText = styled.div`
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 30px;
-  font-weight: 900;
-  text-align: left;
-  line-height: 1.3;
-  /* margin: 40px 0 40px 40px; */
+// 맞춤 상품 스타일
+export const RecommendProduct = styled(BasicCard)`
+  background: #e8e8e8;
+  color: black;
 `;
 
 // 소비성향 테스트 카드
-export const TestCard = styled.div`
-  width: 660px;
-  height: 250px;
+export const TestCard = styled(BasicCard)`
   background: #446864;
   color: white;
-  /* border-radius: 10px; */
-  border-radius: 30px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  /* flex-direction: row; */
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  transition: transform 0.5s ease; /* 부드러운 전환 효과 추가 */
-
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
-
-// 소비성향 테스트 텍스트
-export const TestCardText = styled.div`
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 30px;
-  font-weight: bold;
-  text-align: left;
-  line-height: 1.3;
-  /* margin: 40px 0 40px 70px; */
-  margin-left: 30px;
 `;
 
 // 고객센터 버튼
@@ -254,18 +270,9 @@ export const CounselBox = styled.div`
 
 // 아이콘을 감싸는 래퍼
 export const IconWrapper = styled.div`
-  width: 65px;
-  height: 65px;
-  background-color: white; /* 아이콘 배경색 */
-  border-radius: 50%; /* 둥근 모서리 */
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 0px; /* 아이콘을 왼쪽에 붙이기 */
-`;
-
-// 아이콘 이미지
-export const IconImage = styled.img`
-  width: 35px; /* 아이콘 크기 */
-  height: auto;
 `;

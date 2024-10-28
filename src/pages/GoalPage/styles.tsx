@@ -126,7 +126,7 @@ export const IconBackground = styled.button<IconBackgroundProps>`
   opacity: ${(props) => (props.disabled ? 0.6 : 1)};
 
   &:hover {
-    border: ${(props) => !props.disabled && "1px solid #545454"};
+    border: ${(props) => !props.disabled && "1px solid #008485"};
     background-color: ${(props) =>
       props.disabled ? "#f0f0f0" : props.$isSelected ? "#D0D4D7" : "#e9edf0"};
   }
