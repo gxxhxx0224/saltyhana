@@ -48,7 +48,7 @@ export const InputContainer = styled.div`
   font-family: "Noto Sans KR";
 
   &:focus-within {
-    outline: 2px solid #0066ff;
+    outline: 2px solid #008485;
   }
 `;
 
