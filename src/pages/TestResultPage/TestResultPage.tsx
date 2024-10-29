@@ -11,9 +11,9 @@ import {
   Container,
   ResultImgWrapper,
 } from "./styles";
-import Result1Img from "../../images/TestresultImg1.png";
-import Result2Img from "../../images/TestresultImg2.png";
-import Result3Img from "../../images/TestresultImg3.png";
+import Result1Img from "../../images/TestresultImg.Money.png";
+import Result2Img from "../../images/TestresultImg.Nerd.png";
+import Result3Img from "../../images/TestresultImg_Love.png";
 
 type ConsumptionType = {
   title: string;
@@ -32,25 +32,25 @@ export default function TestResultPage() {
     const idx = parseInt(resultNum);
     const consumtionTypes: ConsumptionType[] = [
       {
-        title: "오늘만 산다",
+        title: "돈 쓰는 게 제일 좋아! 욜로족",
         image: Result1Img,
         tags: ["#YOLO", "#___P"],
         description:
-          "당장 사고 싶은 것을 바로 사야 만족하는 욜로족입니다.\n자산을 모으긴 어려워 보입니다.",
+          "돈 쓰는 즐거움을 아는 당신!\n돈 모으는 즐거움도 한 번 느껴보실래요?",
       },
       {
-        title: "나에게 주는 선물",
+        title: "욜로와 요노 그 사이 어딘가",
         image: Result2Img,
         tags: ["#YOLO", "#_S_P"],
         description:
-          "진정으로 원하는 소비를 위해 당장의 소비는 잘 참으시는군요!\n하지만 자산을 모으기엔 한계가 있어 보입니다..",
+          "돈 쓰는 즐거움과 자산 관리의 중요성을 아시는군요!\n 자산을 모으기 위해 조금만 더 노력해볼까요?",
       },
       {
         title: "마지막에 웃는 \n 진짜 승리자!",
         image: Result3Img,
         tags: ["#YONO", "#___J"],
         description:
-          "목표를 달성하기 위해 당장의 소비를 잘 참는 당신\n부자가 될 자격이 있습니다!",
+          "당장의 소비를 참고 자산을 관리하는 당신!\n부자가 될 자격이 있습니다!",
       },
     ];
 

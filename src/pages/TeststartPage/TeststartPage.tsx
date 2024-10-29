@@ -16,13 +16,13 @@ const TeststartPage: React.FC = () => {
         <span>내 소비 성향을 찾고 맞춤형 금융 상품을 찾을 수 있어요.</span>
       </styled.HeaderDescription>
       <styled.ElementDiv>
-        <styled.Element>
+        <styled.Element delay={0.3}>
           <styled.ElementImage src={img1} style={{ marginLeft: "20px" }} />
           <styled.ElementDescription style={{ marginTop: "50px" }}>
             8개 질문으로 간단하게!
           </styled.ElementDescription>
         </styled.Element>
-        <styled.Element>
+        <styled.Element delay={0.6}>
           <styled.ElementImage
             src={img2}
             style={{ width: "210px", height: "auto" }}
@@ -31,7 +31,7 @@ const TeststartPage: React.FC = () => {
             소비 성향을 분석!
           </styled.ElementDescription>
         </styled.Element>
-        <styled.Element>
+        <styled.Element delay={0.9}>
           <styled.ElementImage src={img3} style={{ marginRight: "20px" }} />
           <styled.ElementDescription style={{ marginTop: "40px" }}>
             맞춤형 금융 상품 추천까지!
@@ -39,7 +39,7 @@ const TeststartPage: React.FC = () => {
         </styled.Element>
       </styled.ElementDiv>
       <Link to="/test/consumption" style={{ textDecoration: "none" }}>
-        <styled.ButtonWrapper>시작하기</styled.ButtonWrapper>
+        <styled.ButtonWrapper delay={1.2}>시작하기</styled.ButtonWrapper>
       </Link>
     </styled.Container>
   );
